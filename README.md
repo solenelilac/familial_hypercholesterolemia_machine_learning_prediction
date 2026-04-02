@@ -1,7 +1,7 @@
 # Predicting Familial Hypercholesterolemia from Genomic Variant Expression Data
 
 **Author:** Lilac Zihui Zhao  
-**Date:** 31st March 2025
+**Date:** March 2025
 
 ---
 
@@ -10,7 +10,7 @@
 This project evaluates whether genomic variant expression data can be used to predict **Familial Hypercholesterolaemia (FH)** — a genetic condition causing reduced LDL clearance and elevated cardiovascular risk — and identifies which genetic variants and demographic factors are most associated with the disease.
 
 The analysis delivers a complete end-to-end machine learning pipeline addressing three core questions:
-1. Can FH be predicted from genetic variant expression data?
+1. Can FH be predicted from demographic + genetic variant expression data?
 2. Which genetic variants are most influential?
 3. How do demographic factors correlate with FH status?
 
@@ -61,25 +61,17 @@ The analysis delivers a complete end-to-end machine learning pipeline addressing
 
 ### Demographics — Who Gets FH?
 
-![Demographic distributions](fig_distributions.png)
-![Age distribution by FH status](fig_age_distribution_by_fhstatus.png)
-
 FH patients are significantly older, more likely male, more sedentary, and report poorer mental wellbeing (all p < 0.001, logistic regression).
 
 ---
 
 ### Dimensionality Reduction
 
-![PCA vs UMAP](fig_pca_umap.png)
-
 PCA shows no clear linear cluster separation — consistent with a polygenic architecture where signal is distributed across many variants. UMAP captures the non-linear structure and reveals clearer FH vs No FH grouping.
 
 ---
 
 ### Differential Expression
-
-![Volcano plot](fig_volcano.png)
-![Bubble plot](fig_bubble.png)
 
 No single variant exceeds ±1.0 log₂FC, confirming a polygenic signal. Key variants:
 - **Var_X100248** — most strongly downregulated (log₂FC = −0.630, ~54% lower expression in FH)
@@ -89,9 +81,6 @@ No single variant exceeds ±1.0 log₂FC, confirming a polygenic signal. Key var
 ---
 
 ### Predictive Modelling
-
-![ROC curves](fig_roc_curves.png)
-![Confusion matrices](fig_confusion_matrices.png)
 
 | Model | AUC | FH Recall | Specificity | Precision |
 |---|---|---|---|---|
@@ -104,8 +93,6 @@ SVM is recommended: it achieves perfect FH recall with near-perfect specificity.
 ---
 
 ### Feature Importance
-
-![Feature importance](fig_feature_importance.png)
 
 **Var_X100248** and **Var_X100251** are the top two features across both Random Forest and LASSO — consistent with the differential expression results.
 
